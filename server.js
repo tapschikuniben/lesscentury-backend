@@ -64,7 +64,6 @@ app.get('/', (req, res) => {
 // app.listen(process.env.PORT, () => {
 //     console.log("Server is listening on port 3000");
 // });
-
 // listen on port environment port or port 3000
 app.listen(config.serverport, () => {
     console.log(`Server is running on port ${config.serverport}.`);
