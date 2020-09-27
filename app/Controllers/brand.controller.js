@@ -13,8 +13,6 @@ exports.create = (req, res) => {
     const brand = new Brand({
         brand_name: req.body.brand_name,
         status: req.body.status,
-        brand_image: req.body.brand_image,
-        sort_index: req.body.sort_index,
     });
 
     // Save Brand in the database
@@ -75,8 +73,6 @@ exports.update = (req, res) => {
     Brand.findByIdAndUpdate(req.params.brandId, {
         brand_name: req.body.brand_name,
         status: req.body.status,
-        brand_image: req.body.brand_image,
-        sort_index: req.body.sort_index,
     }, { new: true })
         .then(brand => {
             if (!brand) {

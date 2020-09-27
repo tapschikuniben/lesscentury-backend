@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse requests of content
 app.use(bodyParser.json()); // parse requests of content-type - application/json
 app.use(cors());
 
+// Make Images "Uploads" Folder Publicly Available
+app.use('/public', express.static('public'));
+
 const Role = require('./app/Models/role.model.js');
 
 //Enable CORS for all HTTP methods
@@ -26,15 +29,16 @@ const mongoose = require('mongoose');
 
 // Required Routes
 require('./app/Routes/category.routes.js')(app);
-require('./app/Routes/brand.routes.js')(app);
 require('./app/Routes/product.routes.js')(app);
 require('./app/Routes/customer.routes.js')(app);
 require('./app/Routes/customerGroup.routes.js')(app);
 require('./app/Routes/order.routes.js')(app);
 require('./app/Routes/role.routes.js')(app);
+require('./app/Routes/brand.routes.js')(app);
 // user routes
 require("./app/Routes/auth.routes.js")(app);
 require("./app/Routes/user.routes.js")(app);
+
 
 // Make Images "Uploads" Folder Publicly Available
 app.use('/public', express.static('public'));

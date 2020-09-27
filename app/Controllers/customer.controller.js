@@ -31,6 +31,7 @@ exports.create = (req, res) => {
         modified_date: req.body.modified_date,
         modified_by: req.body.modified_by,
         ip_address: req.body.ip_address,
+        role: req.body.role,
     });
 
     // Save Customer in the database
@@ -109,6 +110,7 @@ exports.update = (req, res) => {
         modified_date: req.body.modified_date,
         modified_by: req.body.modified_by,
         ip_address: req.body.ip_address,
+        role: req.body.role,
     }, { new: true })
         .then(customer => {
             if (!customer) {

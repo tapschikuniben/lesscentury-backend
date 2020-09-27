@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = mongoose.Schema({
-    sku: { type: String },
+    sku: {
+        sku_name: { type: String },
+        sku_status: { type: String },
+    },
     upc: { type: String },
     quantity: { type: Number },
     stock_status_id: { type: String },
     image_path: { type: String },
     manufacturer_id: { type: String, required: true },
-    shipping: { type: String },
+    supplier: { type: String },
+    delivery_mode: { type: String },
     price: { type: Number, required: true },
     date_available: { type: Date, required: true },
     sort_index: { type: Number },
@@ -23,12 +27,13 @@ const ProductSchema = mongoose.Schema({
     location: { type: String },
     delete_flag: { type: String },
     condition: { type: String },
-    todays_deals: { type: String },
+    todays_deals: { type: Boolean },
+    is_feature: { type: Boolean },
     status: { type: String },
     created_by: { type: String },
     modified_by: { type: String },
-    created_date: { type: Date, required: true },
-    modified_date: { type: Date, required: true },
+    created_date: { type: Date },
+    modified_date: { type: Date },
 })
 
 ProductSchema.set('toJSON', { virtuals: true });

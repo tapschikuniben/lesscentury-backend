@@ -5,7 +5,7 @@ const CustomerSchema = mongoose.Schema({
     email: { type: String, required: true },
     customer_group_id: { type: String },
     contact: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String },
     status: { type: String },
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
@@ -17,10 +17,11 @@ const CustomerSchema = mongoose.Schema({
     last_login: { type: Date },
     newsletters: { type: String },
     created_by: { type: String },
-    created_date: { type: Date, required: true },
-    modified_date: { type: Date, required: true },
+    created_date: { type: Date },
+    modified_date: { type: Date },
     modified_by: { type: String },
     ip_address: { type: String },
+    role: { type: String },
 }, {
     timestamps: true
 });
