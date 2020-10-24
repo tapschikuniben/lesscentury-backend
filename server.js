@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const app = express();
 
 // parse requests
@@ -34,11 +33,19 @@ require('./app/Routes/customer.routes.js')(app);
 require('./app/Routes/customerGroup.routes.js')(app);
 require('./app/Routes/order.routes.js')(app);
 require('./app/Routes/role.routes.js')(app);
-require('./app/Routes/brand.routes.js')(app);
 // user routes
 require("./app/Routes/auth.routes.js")(app);
 require("./app/Routes/user.routes.js")(app);
 
+
+// Routes to Handle Request
+const brandRoute = require('./app/Routes/brand.routes.js');
+const productFileRoute = require('./app/Routes/product-file.routes.js')
+
+
+// API Route
+app.use('/', brandRoute);
+app.use('/', productFileRoute)
 
 // Make Images "Uploads" Folder Publicly Available
 app.use('/public', express.static('public'));
