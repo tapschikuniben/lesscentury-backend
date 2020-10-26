@@ -5,6 +5,8 @@ const ProductFileSchema = mongoose.Schema({
     created_by: { type: String },
     modified_by: { type: String },
     product_id: { type: String },
+    product_name: { type: String },
+    product_amount: { type: String }
 })
 
 ProductFileSchema.set('toJSON', { virtuals: true });

@@ -52,6 +52,8 @@ router.post('/createProductFile', upload.array('avatar', 6), (req, res, next) =>
         created_by: req.body.created_by,
         modified_by: req.body.modified_by,
         product_id: req.body.product_id,
+        product_name: req.body.product_name,
+        product_amount: req.body.product_amount,
     });
     productFile.save().then(result => {
         console.log(result);
@@ -63,6 +65,8 @@ router.post('/createProductFile', upload.array('avatar', 6), (req, res, next) =>
                 created_by: req.body.created_by,
                 modified_by: req.body.modified_by,
                 product_id: req.body.product_id,
+                product_name: req.body.product_name,
+                product_amount: req.body.product_amount,
             }
         })
     }).catch(err => {
