@@ -1,5 +1,6 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../Controllers/user.controller.js");
+const auth_controller = require("../Controllers/auth.controller.js");
 
 module.exports = function (app) {
     app.use(function (req, res, next) {
@@ -25,4 +26,8 @@ module.exports = function (app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
     );
+
+
+    // Retrieve a single user with userId
+    app.get('/api/auth/users/:userId', auth_controller.findOne);
 };

@@ -8,6 +8,8 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
     const user = new User({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
@@ -107,3 +109,24 @@ exports.signin = (req, res) => {
             });
         });
 };
+
+exports.findOne = (req, res) => {
+    User.findById(req.params.userId)
+        .then(user => {
+            if (!user) {
+                return res.status(404).send({
+                    message: "user not found with id " + req.params.userId
+                });
+            }
+            res.send(user);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "user not found with id " + req.params.userId
+                });
+            }
+            return res.status(500).send({
+                message: "Something wrong retrieving user with id " + req.params.userId
+            });
+        });
+}

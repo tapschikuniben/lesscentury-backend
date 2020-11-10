@@ -16,6 +16,7 @@ const ProductSchema = mongoose.Schema({
     date_available: { type: Date, required: true },
     sort_index: { type: Number },
     product_name: { type: String },
+    category: { type: String },
     description: { type: String },
     amount: { type: Number },
     meta_tag_title: { type: String },
